@@ -4,11 +4,6 @@ pipeline {
         terraform 'terraform'
     }
     stages {
-        stage('Poll Code Repository') {
-            steps {
-                git credentialsId: 'git', url: 'git@github.com:asatyam78/spring-boot-chat-app.git'
-            }
-        }
         stage('terraform format') {
             when {
                 expression {action == 'apply'}
