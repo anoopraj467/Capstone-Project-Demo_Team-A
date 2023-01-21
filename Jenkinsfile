@@ -3,6 +3,11 @@ pipeline {
     tools {
         terraform 'terraform'
     }
+    environment {
+        NODE_COUNT = 1
+        VM_SIZE = 'Standard_B2s'
+        SKU = 'Basic'
+    }
     stages {
         stage('terraform format') {
             when {
@@ -13,9 +18,6 @@ pipeline {
             }
         }
         stage('terraform initialize') {
-            when {
-                expression {action == 'apply'}
-            }
             steps{
                 sh 'terraform init'
             }
@@ -33,7 +35,7 @@ pipeline {
                 expression {action == 'apply'}
             }
             steps{
-                sh 'terraform plan -out tfplan'
+                sh 'terraform plan -var node_count=${NODE_COUNT} -var vm_size=${VM_SIZE} -var sku=${SKU} -out tfplan'
             }
         }
         stage('terraform apply') {

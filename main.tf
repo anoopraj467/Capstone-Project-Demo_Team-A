@@ -12,7 +12,8 @@ module "aks" {
   cluster_name = "${var.resource_group_prefix}-aks"
   resource_group_name = azurerm_resource_group.rg.name
   location = azurerm_resource_group.rg.location
-  node_count = 1
+  node_count = "${var.node_count}"
+  vm_size = "${var.vm_size}"
 }
 
 module "acr" {
@@ -20,6 +21,7 @@ module "acr" {
   container_registry_name = "capstoneprojectdemoacr"
   resource_group_name = azurerm_resource_group.rg.name
   location = azurerm_resource_group.rg.location
+  sku = "${var.sku}"
 }
 
 resource "azurerm_role_assignment" "role" {

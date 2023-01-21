@@ -13,3 +13,7 @@ variable "location" {
 variable "node_count" {
   type = string
 }
+
+variable "vm_size" {
+  type = string
+}
