@@ -50,9 +50,7 @@ pipeline {
             }
             steps{
                 script {
-                    dir('aks-terraform/') {
-                        sh 'terraform destroy --auto-approve'
-                    }
+                    sh 'terraform destroy --auto-approve'
                 }
             }
         }
