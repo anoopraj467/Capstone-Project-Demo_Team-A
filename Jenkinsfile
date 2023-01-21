@@ -33,7 +33,7 @@ pipeline {
                 expression {action == 'apply'}
             }
             steps{
-                sh 'terraform plan'
+                sh 'terraform plan -out tfplan'
             }
         }
         stage('terraform apply') {
@@ -41,7 +41,7 @@ pipeline {
                 expression {action == 'apply'}
             }
             steps{
-                sh 'terraform apply --auto-approve'
+                sh 'terraform apply "tfplan" --auto-approve'
             }
         }
         stage('terraform destroy') {
