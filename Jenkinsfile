@@ -52,7 +52,7 @@ pipeline {
             }
             steps{
                 script {
-                    sh 'terraform destroy --auto-approve'
+                    sh 'terraform destroy -var node_count=${NODE_COUNT} -var vm_size=${VM_SIZE} -var sku=${SKU} --auto-approve'
                 }
             }
         }
