@@ -43,7 +43,7 @@ pipeline {
                 expression {action == 'apply'}
             }
             steps{
-                sh 'terraform apply "tfplan" --auto-approve'
+                sh 'terraform apply --auto-approve "tfplan"'
             }
         }
         stage('terraform destroy') {
