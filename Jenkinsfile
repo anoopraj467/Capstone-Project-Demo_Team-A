@@ -10,9 +10,9 @@ pipeline {
     }
     stages {
         stage('terraform format') {
-            when {
-                expression {action == 'apply'}
-            }
+//             when {
+//                 expression {action == 'apply'}
+//             }
             steps {
                 sh 'terraform fmt'
             }
