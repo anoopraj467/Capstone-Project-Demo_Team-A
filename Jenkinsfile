@@ -4,7 +4,7 @@ pipeline {
         terraform 'terraform'
     }
     environment {
-        NODE_COUNT = 2
+        NODE_COUNT = 3
         VM_SIZE = 'Standard_B2s'
         SKU = 'Basic'
     }
